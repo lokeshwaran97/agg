@@ -1,0 +1,53 @@
+# Colcon / ROS 2 workspace artifacts
+build/
+install/
+log/
+.colcon_install_layout
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+venv/
+.venv/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.clangd/
+compile_commands.json
+
+# ROS bags / maps / logs
+*.bag
+*.db3
+*.mcap
+maps/
+*.pgm
+*.yaml.bak
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets / local overrides
+.env
+*.pem
+cyclonedds.xml
+**/local_setup_override.*
+
+# Arduino / PlatformIO (if used later)
+.pio/
+*.hex
+
+# Local sample / reference code (not part of the ROS workspace to publish)
+sample_code/

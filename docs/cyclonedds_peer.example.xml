@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Copy to ~/cyclonedds.xml and set Peer address to the OTHER machine's IP.
+  Then:
+    export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    export CYCLONEDDS_URI=file://$HOME/cyclonedds.xml
+  See wifi_multimachine.md
+-->
+<CycloneDDS>
+  <Domain>
+    <General>
+      <AllowMulticast>false</AllowMulticast>
+    </General>
+    <Discovery>
+      <ParticipantIndex>auto</ParticipantIndex>
+      <Peers>
+        <Peer address="192.168.1.50"/>
+      </Peers>
+    </Discovery>
+  </Domain>
+</CycloneDDS>

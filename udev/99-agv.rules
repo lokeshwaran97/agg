@@ -1,0 +1,24 @@
+# Stable device names for AGV (Raspberry Pi)
+#
+# 1) Plug in one device at a time and run:
+#      udevadm info -a -n /dev/ttyUSB0 | grep -E 'idVendor|idProduct|serial'
+# 2) Put the unique ATTRS{serial} on the matching rule below.
+# 3) Install:
+#      sudo cp udev/99-agv.rules /etc/udev/rules.d/
+#      sudo udevadm control --reload-rules && sudo udevadm trigger
+#
+# YDLIDAR (example: Silicon Labs CP210x — replace serial)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", ATTRS{serial}=="0001", SYMLINK+="ydlidar", MODE="0666"
+
+# ESP32 USB-UART (example — replace serial with your ESP32 adapter serial)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", ATTRS{serial}=="0002", SYMLINK+="agv_esp32", MODE="0666"
+
+# Espressif native USB-JTAG / Serial (ESP32-S2/S3 etc.)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="303a", ATTRS{idProduct}=="1001", SYMLINK+="agv_esp32", MODE="0666"
+
+# CH340 (common cheap adapters) — if only one CH340 is present:
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="ydlidar", MODE="0666"
+
+# Until udev is customized you can launch with:
+#   serial_port:=/dev/ttyUSB1
+# and set ydlidar port: /dev/ttyUSB0 in config/ydlidar.yaml
